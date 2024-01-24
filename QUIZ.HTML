@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Interactive Quiz</h1>
+<div id="quiz-container">
+  <p id="question"></p>
+  <input type="text" id="userAnswer" placeholder="Your Answer">
+  <button onclick="checkAnswer()">Submit Answer</button>
+  <p id="result"></p>
+</div>
+
+<script>
+  const quiz = [
+    { question: "What is the short form of Web Application Development?", answer: "WAD" }
+  ];
+
+  let currentQuestionIndex = 0;
+  let currentQuestion = quiz[currentQuestionIndex];
+
+  function displayQuestion() {
+    document.getElementById("question").innerText = currentQuestion.question;
+    document.getElementById("userAnswer").value = "";
+    document.getElementById("result").innerText = "";
+  }
+
+  function checkAnswer() {
+    const userAnswer = document.getElementById("userAnswer").value.trim().toUpperCase();
+
+    if (userAnswer === currentQuestion.answer) {
+      document.getElementById("result").innerText = "Correct!";
+    } else {
+      document.getElementById("result").innerText = "Incorrect. The correct answer is: " + currentQuestion.answer;
+    }
+  }
+
+  displayQuestion();
+</script>
+
+</body>
+</html>
